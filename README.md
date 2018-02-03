@@ -1,4 +1,4 @@
-![alt text](https://raw.githubusercontent.com/paolapesantez/biLouvainMFX/edit/master/moves.png)
+![alt text](https://raw.githubusercontent.com/paolapesantez/biLouvainMFX/edit/master/vertexMove.png)
 
 # biLouvainMFX
 Updated biLouvain algorithm code that allows to use not just inter-type but also intra-type information of a given bipartite network.
