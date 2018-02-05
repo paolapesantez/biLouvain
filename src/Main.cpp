@@ -97,6 +97,12 @@ int main(int argc, char *argv[])
                                 pieces = StringSplitter::split(inputFileName,"Bipartite",items);
                                 if(items > 1)
                                         band = true;
+				else
+				{
+					pieces = StringSplitter::split(inputFileName,"BIPARTITE",items);
+                                	if(items > 1)
+                                        	band = true;
+				}
                         }
                         delete[] pieces;
                         if(band == false)
