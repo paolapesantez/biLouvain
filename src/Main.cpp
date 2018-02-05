@@ -90,12 +90,12 @@ int main(int argc, char *argv[])
                         //if((inputFileName.find("bipartite") == std::string::npos)||(inputFileName.find("Bipartite") == std::string::npos))
                         std::string* pieces;
                         pieces = StringSplitter::split(inputFileName,"bipartite",items);
-                        if(items != 0)
+                        if(items > 1)
                                 band = true;
                         else
                         {
                                 pieces = StringSplitter::split(inputFileName,"Bipartite",items);
-                                if(items != 0)
+                                if(items > 1)
                                         band = true;
                         }
                         delete[] pieces;
