@@ -145,7 +145,7 @@ class PreProcessInputBipartiteGraph
 		std::ifstream bipartiteDictionaryFile(dictionaryFileName.c_str());
 		if(bipartiteDictionaryFile.is_open()==true)
 		{
-			printf("\n ::: Reading Dictionary File...%s  Please Wait... :::",inputFileName.c_str());
+			printf("\n ::: Reading Dictionary File...%s  Please Wait... :::",dictionaryFileName.c_str());
                         std::string line = "";
 	        	std::string *pieces;
         	        int items = 0;
