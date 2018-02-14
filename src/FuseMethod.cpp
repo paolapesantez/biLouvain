@@ -127,6 +127,7 @@ int FuseMethod::fuseCommunities(Graph &g,int start,int end, double &lambda)
 		result++;
                 //update communities
 		updateNodeCommunity(g,g._graph[i].getId(),i,key);
+		updateNeighborCommunities(g,g._graph[i].getId(),i,key);
 		if(_alpha != 0.0)
 			_communities[i].setCoClusterMateCommunityId(coClusterMate);
 		if(_alpha != 1.0)
