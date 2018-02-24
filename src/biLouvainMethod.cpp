@@ -749,7 +749,7 @@ double biLouvainMethod::calculateMaxModularityGainIteration(Graph &g,int* &nodes
 				 candidateDeltaModularityGain += deltaModularityGain.newModularityContribution;
 				//Calculate Delta QB for neighbors of candidate communities (Dj)
 				//printf("4 \n");
-				if((betaF >= lambda))//&&(betaF > _communities[currentCommunity].getBetaFactor()))
+				if((betaF >= lambda)&&(betaF > _communities[currentCommunity].getBetaFactor()))
 				{
 					first++;	
 					std::vector<int>neighborCommunities = findNeighborCommunitiesMap(g,candidates[j]);
@@ -773,7 +773,7 @@ double biLouvainMethod::calculateMaxModularityGainIteration(Graph &g,int* &nodes
 					}	
 					else
 					{
-						if((candidateDeltaModularityGain > maxDeltaModularityGain))//&&(betaF > _communities[currentCommunity].getBetaFactor()))
+						if((candidateDeltaModularityGain > maxDeltaModularityGain)&&(betaF > _communities[currentCommunity].getBetaFactor()))
 						{
 							maxDeltaModularityGain = candidateDeltaModularityGain;
 							candidateCommunity = candidates[j];
