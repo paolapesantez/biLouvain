@@ -69,16 +69,10 @@ int FuseMethod::fuseCommunities(Graph &g,int start,int end, double &lambda)
          for(int j=start;j<i;j++)
          {
          	//std::cout << "\nCommunity: " << j << "\t Number Nodes: " << _communities[j].getNumberNodes() << std::endl;
-		first++;
                 if(_communities[j].getNumberNodes()>0) 
 		{
                 	if(_alpha != 0.0)
 				b = _communities[j].getCoClusterMateCommunityId();
-			else if(_alpha != 1.0)
-			{
-				if(first == 1)
-					betaFactor = _communities[j].getBetaFactor();
-			}
                         //int intersection = std::count_if(b.begin(),b.end(),[&](int k){return c.find(k) != c.end();});
 			//similarityCommunity = calculateCommunitySimilarity(i);	
 			//std::cout << "\nBeta Factor entre: " << key << "\t"<<j<<"\t"<< temp;
@@ -86,7 +80,7 @@ int FuseMethod::fuseCommunities(Graph &g,int start,int end, double &lambda)
                         {
 				set_intersection(a.begin(),a.end(),b.begin(),b.end(),back_inserter(c));
 				temp = calculateCommunityBetaFactor(g,_communities[j].getDescription(),g._graph[i].getSimilarityToIntraTypeNeighborCommunity(j));
-				if((c.size() > maxIntersection))//&&(temp >= lambda)&&(temp>betaFactor))
+				if((c.size() > maxIntersection)&&(temp >= lambda)&&(temp>betaFactor))
                         	{
                         		key = j;
                                 	maxIntersection = c.size();
