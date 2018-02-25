@@ -60,14 +60,14 @@ int FuseMethod::fuseCommunities(Graph &g,int start,int end, double &lambda)
 		totalModularity = IntraTypeDefinitionAllCommunities(g,start,end);
 	for(int i=start;i<end;i++)
 	{
-	 maxIntersection = 0;
-	 first = 0;
-         key = i;
-	 if(_alpha != 0.0)
+	  maxIntersection = 0;
+	  betaFactor = 0.0;
+          key = i;
+	  if(_alpha != 0.0)
 	         a =  _communities[i].getCoClusterMateCommunityId();
-         //std::unordered_set<int> c(a.begin(),a.end());
-         for(int j=start;j<i;j++)
-         {
+          //std::unordered_set<int> c(a.begin(),a.end());
+          for(int j=start;j<i;j++)
+          {
          	//std::cout << "\nCommunity: " << j << "\t Number Nodes: " << _communities[j].getNumberNodes() << std::endl;
                 if(_communities[j].getNumberNodes()>0) 
 		{
