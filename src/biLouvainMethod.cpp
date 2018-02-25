@@ -734,9 +734,11 @@ double biLouvainMethod::calculateMaxModularityGainIteration(Graph &g,int* &nodes
 		{
 			std::stringstream temp;
 			double betaF = 0.0;
+			double candidateDeltaModularityGain = 0.0;
 			for(unsigned int j=0;j<candidates.size();j++)
 			{
-				double candidateDeltaModularityGain = 0.0;				
+				candidateDeltaModularityGain = 0.0;				
+				betaF = 0.0;
 				temp.str("");
 				//temp.precision(64);
 				//printf("2 \n"); 
@@ -769,7 +771,8 @@ double biLouvainMethod::calculateMaxModularityGainIteration(Graph &g,int* &nodes
 						maxDeltaModularityGain = candidateDeltaModularityGain;
 						candidateCommunity = candidates[j];
 						maxChangesCandidate << temp.str();
-						betaFactorCandidateCommunity = betaF;
+						if(_alpha != 1.0)
+							betaFactorCandidateCommunity = betaF;
 					}	
 					else
 					{
@@ -779,7 +782,8 @@ double biLouvainMethod::calculateMaxModularityGainIteration(Graph &g,int* &nodes
 							candidateCommunity = candidates[j];
 							maxChangesCandidate.str("");
 							maxChangesCandidate << temp.str();
-							betaFactorCandidateCommunity = betaF;
+							if(_alpha != 1.0)
+								betaFactorCandidateCommunity = betaF;
 						}
 					}
 				}
@@ -894,10 +898,12 @@ double biLouvainMethod::calculateMaxModularityGainIterationIntraType(Graph &g,in
                 if(candidates.size()>0)
                 {
                         double betaF = 0.0;
+			double candidateDeltaModularityGain = 0.0;
 			betaFactorCandidateCommunity = _communities[currentCommunity].getBetaFactor();
                         for(unsigned int j=0;j<candidates.size();j++)
                         {
-                                double candidateDeltaModularityGain = 0.0;
+                                candidateDeltaModularityGain = 0.0;
+				betaF = 0.0;
                                 deltaModularityGain = calculateDeltaGainModularity(g,g._graph[nodesOrderExecution[i]],candidates[j],currentCommunity,2);
                                 betaF = deltaModularityGain.newBetaFactor;
                                 gainDoble = deltaModularityGain.newModularityContribution + _communities[candidates[j]].getModularityContribution();
