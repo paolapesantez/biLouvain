@@ -729,7 +729,6 @@ double biLouvainMethod::calculateMaxModularityGainIteration(Graph &g,int* &nodes
 		//Calculate Delta QB for the set of candidate communities (Cj)
 		int candidateCommunity = -1;
 		std::stringstream maxChangesCandidate;
-		int first = 0;
 		if(candidates.size()>0)
 		{
 			std::stringstream temp;
@@ -755,7 +754,6 @@ double biLouvainMethod::calculateMaxModularityGainIteration(Graph &g,int* &nodes
 				//printf("4 \n");
 				if((betaF >= lambda)&&(betaF > betaFactorCandidateCommunity))
 				{
-					first++;	
 					std::vector<int>neighborCommunities = findNeighborCommunitiesMap(g,candidates[j]);
 					for(unsigned int k=0;k<neighborCommunities.size();k++)
 					{	
@@ -767,26 +765,14 @@ double biLouvainMethod::calculateMaxModularityGainIteration(Graph &g,int* &nodes
 					        //candidateDeltaModularityGain += deltaModularityGain.newModularityContribution-(gainDoble - stof(gainString.str()));
 						candidateDeltaModularityGain += deltaModularityGain.newModularityContribution;
 					}
-					
-					if(first==1)
+					if((candidateDeltaModularityGain > maxDeltaModularityGain)&&(betaF > _communities[currentCommunity].getBetaFactor()))
 					{
 						maxDeltaModularityGain = candidateDeltaModularityGain;
 						candidateCommunity = candidates[j];
+						maxChangesCandidate.str("");
 						maxChangesCandidate << temp.str();
 						if(_alpha != 1.0)
 							betaFactorCandidateCommunity = betaF;
-					}	
-					else
-					{
-						if((candidateDeltaModularityGain > maxDeltaModularityGain)&&(betaF > _communities[currentCommunity].getBetaFactor()))
-						{
-							maxDeltaModularityGain = candidateDeltaModularityGain;
-							candidateCommunity = candidates[j];
-							maxChangesCandidate.str("");
-							maxChangesCandidate << temp.str();
-							if(_alpha != 1.0)
-								betaFactorCandidateCommunity = betaF;
-						}
 					}
 				}
 			}
