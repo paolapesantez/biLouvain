@@ -153,9 +153,9 @@ int main(int argc, char *argv[])
 				biLouvainMethodMurataPN biLouvain;
 				//std::vector<double> communitiesBetaFactor;
 				 if((fuse == 1)&&(initialCommunitiesFileName.empty()==true))
-                                        f.fuseMethodFile(*graph,bipartiteFileName);
+                                        f.fuseMethodFile(*graph,bipartiteFileName,alpha,cutoffFuse);
                                 else if((fuse == 1)&&(initialCommunitiesFileName.empty()==false))
-                                        f.initialCommunityDefinitionProvidedFileCommunities(*graph,initialCommunitiesFileName);
+                                        f.initialCommunityDefinitionProvidedFileCommunities(*graph,initialCommunitiesFileName,alpha);
 				std::cout << "\n ::: Starting biLouvain Algorithm :::";
 				gettimeofday(&startTime,NULL);							
 				if(alpha != 0.0)
