@@ -156,7 +156,6 @@ int main(int argc, char *argv[])
                                         f.fuseMethodFile(*graph,bipartiteFileName);
                                 else if((fuse == 1)&&(initialCommunitiesFileName.empty()==false))
                                         f.initialCommunityDefinitionProvidedFileCommunities(*graph,initialCommunitiesFileName);
-                                }
 				std::cout << "\n ::: Starting biLouvain Algorithm :::";
 				gettimeofday(&startTime,NULL);							
 				if(alpha != 0.0)
