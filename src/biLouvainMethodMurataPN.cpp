@@ -84,19 +84,16 @@ double biLouvainMethodMurataPN::murataModularityArgMax(Graph &g,int &communityId
 	//printf("\nCommunity:%d AL:%f  AM:%f BF:%f SL:%f",communityId,al,am,betaFactorCommunity,sl);
 	//printf("\nCommunity ID: %d \n",communityId);
 	//printf("AL: %f AM: %f  Edges V1: %d Edges V2: %d  Total edges: %d\n",al,am,_number_edges_V1,_number_edges_V2,_number_edges);
-	if(_communities[communityId].getDescription()=="V1")
-	{	al = al/(2*g._weightEdgesV1);
-		am = am /(2*g._weightEdgesV2);
-		if(_alpha != 1.0)
-		{
+	al = al/(2*g._weightEdges);
+	am = am /(2*g._weightEdges);
+	if(_alpha != 1.0)
+	{
+		if(_communities[communityId].getDescription()=="V1")
+		{	
 			sl = sl/(g._sumSimilarityV1);
 			sm = sm/(g._sumSimilarityV2);
 		}
-	}
-	else
-	{	al = al /(2*g._weightEdgesV2);
-		am = am / (2*g._weightEdgesV1);
-		if(_alpha != 1.0)
+		else
 		{
 			sl = sl/(g._sumSimilarityV2);
 			sm = sm/(g._sumSimilarityV1);
