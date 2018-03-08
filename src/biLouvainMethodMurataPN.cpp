@@ -192,16 +192,13 @@ double* biLouvainMethodMurataPN::murataModularityWithChanges(Graph &g,MetaNode &
 			}
 		}
 	}
-	if(_communities[communityId].getDescription()=="V1")
-	{	al = al/(2*g._weightEdgesV1);
-		am = am /(2*g._weightEdgesV2);
-		if(_alpha != 1.0)
+	al = al/(2*g._weightEdgesV1);
+	am = am /(2*g._weightEdgesV2);
+	if(_alpha != 1.0)
+	{
+		if(_communities[communityId].getDescription()=="V1")
 			sl = sl/(g._sumSimilarityV1);
-	}
-	else
-	{	al = al /(2*g._weightEdgesV2);
-		am = am / (2*g._weightEdgesV1);
-		if(_alpha != 1.0)
+		else
 			sl = sl/(g._sumSimilarityV2);
 	}
 	//printf("AM: %f  AL: %f  Total edges: %d Edges between Communities:%d \n",am,al,_number_edges,calculateEdgesBetweenCommunities(g,communityId,possibleCoClusterMateId));
