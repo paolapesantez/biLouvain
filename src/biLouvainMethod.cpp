@@ -790,16 +790,13 @@ double biLouvainMethod::calculateMaxModularityGainIteration(Graph &g,int* &nodes
 				//printf("3 \n");
 				for(unsigned int j=0;j<differentNeighborCommunities.size();j++)
 				{
-					if(differentNeighborCommunities[j]>=0)
-					{
-						deltaModularityGain = calculateDeltaGainModularity(g,g._graph[nodesOrderExecution[i]],differentNeighborCommunities[j],candidateCommunity,3);
-						//printf("  Delta Modularity Gain: %f \n", deltaModularityGain);
-						gainDoble = deltaModularityGain.newModularityContribution + _communities[differentNeighborCommunities[j]].getModularityContribution();
-						changes << deltaModularityGain.coClusterMateCommunityId << "#" << gainDoble << "$";
-	                                        //gainString << gainDoble;
-	        	       	                //totalDeltaModularityGain += deltaModularityGain.newModularityContribution - (gainDoble- stof(gainString.str()));
-						totalDeltaModularityGain += deltaModularityGain.newModularityContribution;
-					}
+					deltaModularityGain = calculateDeltaGainModularity(g,g._graph[nodesOrderExecution[i]],differentNeighborCommunities[j],candidateCommunity,3);
+					//printf("  Delta Modularity Gain: %f \n", deltaModularityGain);
+					gainDoble = deltaModularityGain.newModularityContribution + _communities[differentNeighborCommunities[j]].getModularityContribution();
+					changes << deltaModularityGain.coClusterMateCommunityId << "#" << gainDoble << "$";
+	                                //gainString << gainDoble;
+	        	       	        //totalDeltaModularityGain += deltaModularityGain.newModularityContribution - (gainDoble- stof(gainString.str()));
+					totalDeltaModularityGain += deltaModularityGain.newModularityContribution;
 				}
 			}
 			changes.str(changes.str().substr(0,changes.str().length()-1));
