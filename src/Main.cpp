@@ -107,7 +107,7 @@ int main(int argc, char *argv[])
                         delete[] pieces;
                         if(band == false)
                         {
-				int pos = inputFileName.find(".");
+				int pos = inputFileName.find_last_of(".");
 				bipartiteFileName = inputFileName.substr(0,pos)+"_bipartite.txt";
 				bipartiteOriginalEntities=PreProcessInputBipartiteGraph::preProcessingGraphData(inputFileName,delimiter);
 			}
