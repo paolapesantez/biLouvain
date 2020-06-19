@@ -390,7 +390,7 @@ void FuseMethod::fuseMethodFile(Graph &g,const std::string &inputFileName,double
 	//std::vector<double> communitiesBetaFactor;
 	_alpha = alpha;
 	struct timeval startTime,endTime;		
-	int pos = inputFileName.find(".");
+	int pos = inputFileName.find_last_of(".");
 	std::string outputFileName = inputFileName.substr(0,pos) + "_InitialCommunities.txt";
 	std::ifstream inputFile(outputFileName.c_str());
 	gettimeofday(&startTime,NULL);
